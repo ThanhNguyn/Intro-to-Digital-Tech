@@ -5,7 +5,12 @@
   const FILES = [
     { name: 'index.html', path: 'index.html', type: 'file' },
     { name: 'styles.css', path: 'styles.css', type: 'file' },
-    { name: 'script.js', path: 'script.js', type: 'file' }
+    { name: 'script.js', path: 'script.js', type: 'file' },
+    { name: 'README.md', path: 'README.md', type: 'file' },
+    { name: 'compress_pdf.py', path: 'compress_pdf.py', type: 'file' },
+    { name: 'generate_portfolio_pdf.py', path: 'generate_portfolio_pdf.py', type: 'file' },
+    { name: 'generate_screenshot_pdf.py', path: 'generate_screenshot_pdf.py', type: 'file' },
+    { name: 'test_injected.py', path: 'test_injected.py', type: 'file' }
   ];
 
   // Load PrismJS Assets dynamically
@@ -26,7 +31,7 @@
     script.src = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js';
     script.onload = () => {
       // Load languages
-      const langs = ['markup', 'css', 'javascript'];
+      const langs = ['markup', 'css', 'javascript', 'python'];
       let loaded = 0;
       langs.forEach(lang => {
         const langScript = document.createElement('script');
@@ -593,7 +598,8 @@
 
     // Highlight code using Prism
     function displayCode(code, ext) {
-      codeEl.className = `ce-code language-${ext === 'html' ? 'markup' : ext}`;
+      const langClass = ext === 'html' ? 'markup' : (ext === 'py' ? 'python' : ext);
+      codeEl.className = `ce-code language-${langClass}`;
       codeEl.innerText = code;
       
       // Render line numbers
