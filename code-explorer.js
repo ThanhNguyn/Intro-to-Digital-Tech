@@ -293,8 +293,8 @@
         margin-right: 15px;
       }
       .ce-editor-container pre {
-        margin: 0;
-        padding: 0;
+        margin: 0 !important;
+        padding: 0 !important;
         flex: 1;
         min-width: 0;
         background: transparent !important;
