@@ -538,7 +538,7 @@
               selectFile(openTabs[openTabs.length - 1]);
             } else {
               activeFile = '';
-              codeEl.innerText = '';
+              codeEl.textContent = '';
               lineNumbers.innerHTML = '';
               imgContainer.style.display = 'none';
               preEl.style.display = 'block';
@@ -581,7 +581,7 @@
       }
 
       loadingEl.style.display = 'flex';
-      codeEl.innerText = '';
+      codeEl.textContent = '';
       lineNumbers.innerHTML = '';
 
       fetch(path)
@@ -596,7 +596,7 @@
         })
         .catch(() => {
           loadingEl.style.display = 'none';
-          codeEl.innerText = 'Lỗi khi tải tệp...';
+          codeEl.textContent = 'Lỗi khi tải tệp...';
         });
     }
 
@@ -604,7 +604,7 @@
     function displayCode(code, ext) {
       const langClass = ext === 'html' ? 'markup' : (ext === 'py' ? 'python' : ext);
       codeEl.className = `ce-code language-${langClass}`;
-      codeEl.innerText = code;
+      codeEl.textContent = code;
       
       // Render line numbers
       const lines = code.split('\n');
@@ -640,7 +640,7 @@
 
     // Copy to Clipboard
     copyBtn.onclick = () => {
-      const content = fileCache[activeFile] || codeEl.innerText;
+      const content = fileCache[activeFile] || codeEl.textContent;
       navigator.clipboard.writeText(content).then(() => {
         const originalText = copyBtn.innerText;
         copyBtn.innerText = 'Copied!';
